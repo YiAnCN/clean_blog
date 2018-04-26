@@ -33,7 +33,7 @@ http://127.0.0.1:8000/index/
 
 ### Home preview
 
-[home](https://raw.githubusercontent.com/WilliamsZhang/clean_blog/master/jpg/%E9%A2%84%E8%A7%88.png)
+![](https://raw.githubusercontent.com/WilliamsZhang/clean_blog/master/jpg/%E9%A2%84%E8%A7%88.png)
 
 ###Background address
 
@@ -43,7 +43,7 @@ http://127.0.0.1:8000/admin/
 
 ###Background preview
 
-background
+![](https://raw.githubusercontent.com/WilliamsZhang/clean_blog/master/jpg/%E5%90%8E%E5%8F%B0%E9%A2%84%E8%A7%88.png)
 
 
 
