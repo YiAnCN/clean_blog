@@ -1,0 +1,65 @@
+﻿
+<!--------------Content--------------->
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <section class="container page-home">
+        <div id="main-content" class="wrap-container zerogrid">
+            {% for post in posts.object_list %}
+                <article>
+                <div class="col-1-2 right">
+                    <img src="{{ MEDIA_URL }}{{ post.image }}" />
+                </div>
+                <div class="col-1-2 left">
+                    <a class="art-category left" >{{ post.get_status_display }}</a>
+                    <div class="clear"></div>
+                    <div class="art-content">
+                        <h2>{{ post.title }}</h2>
+                        <div class="info">By {{ post.auther }} on {{ post.add_time }}</div>
+                        <div class="line"></div>
+                        <p>{{ post.body|slice:"100"|linebreaks }}</p>
+                        <a href="{% url 'single' post.id %}" class="more">Read More</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div id="pagination" class="clearfix">
+
+            {% if posts.has_previous %}
+                <li class="current"><a href="?{{ posts.previous_page_number.querystring }}">上一页</a></li>
+                {% endif %}
+                {% for page in posts.pages %}
+                    {% if page %}
+                        {% ifequal page posts.number %}
+                            <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% else %}
+                            <li class="page"><a href="?{{ page.querystring }}" >{{ page }}</a></li>
+                        {% endifequal %}
+                    {% else %}
+                        <li class="none" ><a href="">...</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if posts.has_next %}
+                    <li class="long"><a href="?{{ posts.next_page_number.querystring }}">下一页</a></li>
+                {% endif %}
+
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block bread %}
+    {% for post in posts.object_list %}
+    <li>
+        <a href="＃" class="parent">{{ post.get_status_display }}</a>
+{#        <ul>#}
+{#            <li><a href="#">Menu 1001</a></li>#}
+{#            <li><a href="#">Menu 1002</a></li>#}
+{#            <li><a href="#">Menu 1003</a></li>#}
+{#        </ul>#}
+    </li>
+    {% endfor %}
+{% endblock %}
